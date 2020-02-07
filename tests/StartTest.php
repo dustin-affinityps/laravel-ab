@@ -1,11 +1,11 @@
 <?php
 
-namespace Ben182\AbTesting\Tests;
+namespace DustinAffinityps\AbTesting\Tests;
 
-use Ben182\AbTesting\Models\Goal;
-use Ben182\AbTesting\AbTestingFacade;
-use Ben182\AbTesting\Models\Experiment;
-use Ben182\AbTesting\Exceptions\InvalidConfiguration;
+use DustinAffinityps\AbTesting\Models\Goal;
+use DustinAffinityps\AbTesting\AbTestingFacade;
+use DustinAffinityps\AbTesting\Models\Experiment;
+use DustinAffinityps\AbTesting\Exceptions\InvalidConfiguration;
 
 class StartTest extends TestCase
 {
