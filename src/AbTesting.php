@@ -1,14 +1,14 @@
 <?php
 
-namespace Ben182\AbTesting;
+namespace DustinAffinityps\AbTesting;
 
-use Ben182\AbTesting\Models\Goal;
+use DustinAffinityps\AbTesting\Models\Goal;
 use Illuminate\Support\Collection;
-use Ben182\AbTesting\Models\Experiment;
-use Ben182\AbTesting\Events\GoalCompleted;
+use DustinAffinityps\AbTesting\Models\Experiment;
+use DustinAffinityps\AbTesting\Events\GoalCompleted;
 use Jaybizzle\CrawlerDetect\CrawlerDetect;
-use Ben182\AbTesting\Events\ExperimentNewVisitor;
-use Ben182\AbTesting\Exceptions\InvalidConfiguration;
+use DustinAffinityps\AbTesting\Events\ExperimentNewVisitor;
+use DustinAffinityps\AbTesting\Exceptions\InvalidConfiguration;
 
 class AbTesting
 {
@@ -68,7 +68,7 @@ class AbTesting
     /**
      * Triggers a new visitor. Picks a new experiment and saves it to the session.
      *
-     * @return \Ben182\AbTesting\Models\Experiment|void
+     * @return \DustinAffinityps\AbTesting\Models\Experiment|void
      */
     public function pageView()
     {
@@ -106,7 +106,7 @@ class AbTesting
     /**
      * Calculates a new experiment.
      *
-     * @return \Ben182\AbTesting\Models\Experiment|null
+     * @return \DustinAffinityps\AbTesting\Models\Experiment|null
      */
     protected function getNextExperiment()
     {
@@ -134,7 +134,7 @@ class AbTesting
      *
      * @param string $goal The goals name
      *
-     * @return \Ben182\AbTesting\Models\Goal|false
+     * @return \DustinAffinityps\AbTesting\Models\Goal|false
      */
     public function completeGoal(string $goal)
     {
@@ -163,7 +163,7 @@ class AbTesting
     /**
      * Returns the currently active experiment.
      *
-     * @return \Ben182\AbTesting\Models\Experiment|null
+     * @return \DustinAffinityps\AbTesting\Models\Experiment|null
      */
     public function getExperiment()
     {
