@@ -1,10 +1,10 @@
 <?php
 
-namespace Ben182\AbTesting\Commands;
+namespace DustinAffinityps\AbTesting\Commands;
 
 use Illuminate\Console\Command;
-use Ben182\AbTesting\Models\Goal;
-use Ben182\AbTesting\Models\Experiment;
+use DustinAffinityps\AbTesting\Models\Goal;
+use DustinAffinityps\AbTesting\Models\Experiment;
 
 class ResetCommand extends Command
 {
