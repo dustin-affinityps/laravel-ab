@@ -1,10 +1,10 @@
 <?php
 
-namespace DustinAffinityps\AbTesting\Tests;
+namespace Dustinaffinityps\AbTesting\Tests;
 
-use DustinAffinityps\AbTesting\AbTestingFacade;
+use Dustinaffinityps\AbTesting\AbTestingFacade;
 use Illuminate\Support\Facades\Event;
-use DustinAffinityps\AbTesting\AbTestingServiceProvider;
+use Dustinaffinityps\AbTesting\AbTestingServiceProvider;
 
 class TestCase extends \Orchestra\Testbench\TestCase
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace DustinAffinityps\AbTesting\Events;
+namespace Dustinaffinityps\AbTesting\Events;
 
 class ExperimentNewVisitor
 {

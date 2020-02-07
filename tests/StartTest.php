@@ -1,11 +1,11 @@
 <?php
 
-namespace DustinAffinityps\AbTesting\Tests;
+namespace Dustinaffinityps\AbTesting\Tests;
 
-use DustinAffinityps\AbTesting\Models\Goal;
-use DustinAffinityps\AbTesting\AbTestingFacade;
-use DustinAffinityps\AbTesting\Models\Experiment;
-use DustinAffinityps\AbTesting\Exceptions\InvalidConfiguration;
+use Dustinaffinityps\AbTesting\Models\Goal;
+use Dustinaffinityps\AbTesting\AbTestingFacade;
+use Dustinaffinityps\AbTesting\Models\Experiment;
+use Dustinaffinityps\AbTesting\Exceptions\InvalidConfiguration;
 
 class StartTest extends TestCase
 {

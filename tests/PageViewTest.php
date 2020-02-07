@@ -1,12 +1,12 @@
 <?php
 
-namespace DustinAffinityps\AbTesting\Tests;
+namespace Dustinaffinityps\AbTesting\Tests;
 
-use DustinAffinityps\AbTesting\AbTesting;
-use DustinAffinityps\AbTesting\AbTestingFacade;
+use Dustinaffinityps\AbTesting\AbTesting;
+use Dustinaffinityps\AbTesting\AbTestingFacade;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Event;
-use DustinAffinityps\AbTesting\Events\ExperimentNewVisitor;
+use Dustinaffinityps\AbTesting\Events\ExperimentNewVisitor;
 
 class PageViewTest extends TestCase
 {

@@ -1,16 +1,12 @@
 
-This package helps you to find out which content works on your site and which doesn't.
-
-It allows you to create experiments and goals. The visitor will receive randomly the next experiment and you can customize your site to that experiment. The view and the goal conversion will be tracked and you can view the results in a report.
+This package helps you A/B tests and create experiments and goals. The visitor will receive randomly the next experiment and you can customize your site to that experiment. The view and the goal conversion will be tracked and you can view the results in a report.
 
 ## Installation
-
-This package can be used in Laravel 5.6 or higher.
 
 You can install the package via composer:
 
 ```bash
-composer require dustin-affinityps/laravel-ab
+composer require dustinaffinityps/laravel-ab
 ```
 
 ## Config
@@ -18,7 +14,7 @@ composer require dustin-affinityps/laravel-ab
 After installation publish the config file:
 
 ```bash
-php artisan vendor:publish --provider="Dustin-affinityps\AbTesting\AbTestingServiceProvider"
+php artisan vendor:publish --provider="Dustinaffinityps\AbTesting\AbTestingServiceProvider"
 ```
 
 You can define your experiments and goals in there.
@@ -164,23 +160,6 @@ In addition you can hook into two events:
 ``` bash
 composer test
 ```
-
-### Changelog
-
-Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
-
-## Contributing
-
-Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
-
-### Security
-
-If you discover any security related issues, please email moin@benjaminbortels.de instead of using the issue tracker.
-
-## Credits
-
-- [Benjamin Bortels](https://github.com/dustin-affinityps)
-- [All Contributors](../../contributors)
 
 ## License
 

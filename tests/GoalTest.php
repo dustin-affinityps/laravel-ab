@@ -1,11 +1,11 @@
 <?php
 
-namespace DustinAffinityps\AbTesting\Tests;
+namespace Dustinaffinityps\AbTesting\Tests;
 
-use DustinAffinityps\AbTesting\AbTesting;
-use DustinAffinityps\AbTesting\AbTestingFacade;
+use Dustinaffinityps\AbTesting\AbTesting;
+use Dustinaffinityps\AbTesting\AbTestingFacade;
 use Illuminate\Support\Facades\Event;
-use DustinAffinityps\AbTesting\Events\GoalCompleted;
+use Dustinaffinityps\AbTesting\Events\GoalCompleted;
 
 class GoalTest extends TestCase
 {

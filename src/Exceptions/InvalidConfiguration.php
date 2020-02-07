@@ -1,6 +1,6 @@
 <?php
 
-namespace DustinAffinityps\AbTesting\Exceptions;
+namespace Dustinaffinityps\AbTesting\Exceptions;
 
 use Exception;
 

@@ -1,11 +1,11 @@
 <?php
 
-namespace DustinAffinityps\AbTesting;
+namespace Dustinaffinityps\AbTesting;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \DustinAffinityps\AbTesting\AbTesting
+ * @see \Dustinaffinityps\AbTesting\AbTesting
  */
 class AbTestingFacade extends Facade
 {

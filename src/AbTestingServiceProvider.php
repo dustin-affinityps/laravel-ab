@@ -1,12 +1,12 @@
 <?php
 
-namespace DustinAffinityps\AbTesting;
+namespace Dustinaffinityps\AbTesting;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
-use DustinAffinityps\AbTesting\Commands\ResetCommand;
-use DustinAffinityps\AbTesting\Commands\ReportCommand;
+use Dustinaffinityps\AbTesting\Commands\ResetCommand;
+use Dustinaffinityps\AbTesting\Commands\ReportCommand;
 
 class AbTestingServiceProvider extends ServiceProvider
 {
