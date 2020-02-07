@@ -1,11 +1,11 @@
 <?php
 
-namespace Ben182\AbTesting\Tests;
+namespace DustinAffinityps\AbTesting\Tests;
 
-use Ben182\AbTesting\AbTesting;
-use Ben182\AbTesting\AbTestingFacade;
+use DustinAffinityps\AbTesting\AbTesting;
+use DustinAffinityps\AbTesting\AbTestingFacade;
 use Illuminate\Support\Facades\Event;
-use Ben182\AbTesting\Events\GoalCompleted;
+use DustinAffinityps\AbTesting\Events\GoalCompleted;
 
 class GoalTest extends TestCase
 {
