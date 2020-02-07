@@ -1,6 +1,6 @@
 <?php
 
-namespace Dustinaffinityps\AbTesting\Models;
+namespace DustinAP\AbTesting\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

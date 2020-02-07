@@ -1,9 +1,9 @@
 <?php
 
-namespace Dustinaffinityps\AbTesting\Commands;
+namespace DustinAP\AbTesting\Commands;
 
 use Illuminate\Console\Command;
-use Dustinaffinityps\AbTesting\Models\Experiment;
+use DustinAP\AbTesting\Models\Experiment;
 
 class ReportCommand extends Command
 {

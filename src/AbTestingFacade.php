@@ -1,6 +1,6 @@
 <?php
 
-namespace Dustinaffinityps\AbTesting;
+namespace DustinAP\AbTesting;
 
 use Illuminate\Support\Facades\Facade;
 

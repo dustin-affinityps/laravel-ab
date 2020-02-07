@@ -30,12 +30,12 @@
     },
     "autoload": {
         "psr-4": {
-            "dustin-affinityps\\AbTesting\\": "src"
+            "DustinAP\\AbTesting\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "dustin-affinityps\\AbTesting\\Tests\\": "tests"
+            "DustinAP\\AbTesting\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -48,10 +48,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "dustin-affinityps\\AbTesting\\AbTestingServiceProvider"
+                "DustinAP\\AbTesting\\AbTestingServiceProvider"
             ],
             "aliases": {
-                "AbTesting": "dustin-affinityps\\AbTesting\\AbTestingFacade"
+                "AbTesting": "DustinAP\\AbTesting\\AbTestingFacade"
             }
         }
     }
