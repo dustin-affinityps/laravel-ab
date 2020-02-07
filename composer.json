@@ -1,21 +1,20 @@
 {
-    "name": "ben182/laravel-ab",
+    "name": "dustin-affinityps/laravel-ab",
     "description": "Laravel A/B experiment testing tool",
     "keywords": [
-        "ben182",
-        "php",
-        "laravel",
-        "laravel-package",
-        "laravel-5-package",
         "ab-testing"
     ],
-    "homepage": "https://github.com/ben182/laravel-ab",
+    "homepage": "https://github.com/dustin-affinityps/laravel-ab",
     "license": "MIT",
     "type": "library",
     "authors": [
         {
             "name": "Ben",
             "email": "moin@benjaminbortels.de",
+            "role": "Developer"
+        }, {
+            "name": "Dustin",
+            "email": "dustin@affinityps.com",
             "role": "Developer"
         }
     ],
@@ -31,12 +30,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Ben182\\AbTesting\\": "src"
+            "dustin-affinityps\\AbTesting\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Ben182\\AbTesting\\Tests\\": "tests"
+            "dustin-affinityps\\AbTesting\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -49,10 +48,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Ben182\\AbTesting\\AbTestingServiceProvider"
+                "dustin-affinityps\\AbTesting\\AbTestingServiceProvider"
             ],
             "aliases": {
-                "AbTesting": "Ben182\\AbTesting\\AbTestingFacade"
+                "AbTesting": "dustin-affinityps\\AbTesting\\AbTestingFacade"
             }
         }
     }
