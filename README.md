@@ -3,7 +3,7 @@ This package helps you A/B tests and create experiments and goals. The visitor w
 
 ## Installation
 
-First add the private repo to your composer.json
+First add the private repo to the `repositories` section of your composer.json
 ```json
 {
     "type": "vcs",
