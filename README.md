@@ -5,6 +5,14 @@ This package helps you A/B tests and create experiments and goals. The visitor w
 
 You can install the package via composer:
 
+First add the private repo to your composer.json
+```json
+{
+    "type": "vcs",
+    "url": "git@github.com:dustin-affinityps/laravel-ab"
+}
+```
+
 ```bash
 composer require dustin-affinityps/laravel-ab
 ```
