@@ -6,7 +6,7 @@ This package helps you A/B tests and create experiments and goals. The visitor w
 You can install the package via composer:
 
 ```bash
-composer require dustinaffinityps/laravel-ab
+composer require dustin-affinityps/laravel-ab
 ```
 
 ## Config
@@ -14,10 +14,10 @@ composer require dustinaffinityps/laravel-ab
 After installation publish the config file:
 
 ```bash
-php artisan vendor:publish --provider="Dustinaffinityps\AbTesting\AbTestingServiceProvider"
+php artisan vendor:publish --provider="DustinAP\AbTesting\AbTestingServiceProvider"
 ```
 
-You can define your experiments and goals in there.
+You can define your experiments, URLs, and goals in there.
 
 Finally, run the newly added migration
 
