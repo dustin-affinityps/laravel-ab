@@ -2,23 +2,21 @@
 
 namespace DustinAP\AbTesting;
 
-use DustinAP\AbTesting\Models\Goal;
 use Illuminate\Support\Collection;
+use DustinAP\AbTesting\Models\Goal;
 use DustinAP\AbTesting\Models\Experiment;
 use DustinAP\AbTesting\Events\GoalCompleted;
-use Jaybizzle\CrawlerDetect\CrawlerDetect;
 use DustinAP\AbTesting\Events\ExperimentNewVisitor;
 use DustinAP\AbTesting\Exceptions\InvalidConfiguration;
+use Jaybizzle\CrawlerDetect\CrawlerDetect;
 
-class AbTesting
-{
+class AbTesting {
     protected $experiments;
 
     const SESSION_KEY_EXPERIMENT = 'ab_testing_experiment';
     const SESSION_KEY_GOALS = 'ab_testing_goals';
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->experiments = new Collection;
     }
 
@@ -27,10 +25,10 @@ class AbTesting
      *
      * @return void
      */
-    protected function start()
-    {
+    protected function start() {
         $configExperiments = config('ab-testing.experiments');
         $configGoals = config('ab-testing.goals');
+        $configURLs = config('ab-testing.urls');
 
         if (! count($configExperiments)) {
             throw InvalidConfiguration::noExperiment();
@@ -44,9 +42,19 @@ class AbTesting
             throw InvalidConfiguration::goal();
         }
 
+        if (!is_array($configURLs) || count($configURLs) < 1 ) {
+            $configURLs = [];
+        }
+
         foreach ($configExperiments as $configExperiment) {
+            $experimentURL = (
+                array_key_exists($configExperiment, $configURLs) ?
+                $configURLs[$configExperiment] : env('APP_URL')
+            );
+
             $this->experiments[] = $experiment = Experiment::firstOrCreate([
                 'name' => $configExperiment,
+                'url'  => $experimentURL,
             ], [
                 'visitors' => 0,
             ]);
@@ -70,8 +78,7 @@ class AbTesting
      *
      * @return \DustinAP\AbTesting\Models\Experiment|void
      */
-    public function pageView()
-    {
+    public function pageView() {
         if (config('ab-testing.ignore_crawlers') && (new CrawlerDetect)->isCrawler()) {
             return;
         }
@@ -93,9 +100,14 @@ class AbTesting
      *
      * @return void
      */
-    protected function setNextExperiment()
-    {
+    protected function setNextExperiment() {
         $next = $this->getNextExperiment();
+
+        if ( $next->url != $_SERVER['SERVER_NAME'] ) {
+            header('Location: https://' . $next->url);
+            exit(0);
+        }
+
         $next->incrementVisitor();
 
         session([
@@ -108,8 +120,7 @@ class AbTesting
      *
      * @return \DustinAP\AbTesting\Models\Experiment|null
      */
-    protected function getNextExperiment()
-    {
+    protected function getNextExperiment() {
         $sorted = $this->experiments->sortBy('visitors');
 
         return $sorted->first();
@@ -122,8 +133,7 @@ class AbTesting
      *
      * @return bool
      */
-    public function isExperiment(string $name)
-    {
+    public function isExperiment(string $name) {
         $this->pageView();
 
         return $this->getExperiment()->name === $name;
@@ -136,8 +146,7 @@ class AbTesting
      *
      * @return \DustinAP\AbTesting\Models\Goal|false
      */
-    public function completeGoal(string $goal)
-    {
+    public function completeGoal(string $goal) {
         if (! $this->getExperiment()) {
             $this->pageView();
         }
@@ -165,8 +174,7 @@ class AbTesting
      *
      * @return \DustinAP\AbTesting\Models\Experiment|null
      */
-    public function getExperiment()
-    {
+    public function getExperiment() {
         return session(self::SESSION_KEY_EXPERIMENT);
     }
 
@@ -175,8 +183,7 @@ class AbTesting
      *
      * @return \Illuminate\Support\Collection|false
      */
-    public function getCompletedGoals()
-    {
+    public function getCompletedGoals() {
         if (! session(self::SESSION_KEY_GOALS)) {
             return false;
         }

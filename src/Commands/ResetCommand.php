@@ -6,8 +6,7 @@ use Illuminate\Console\Command;
 use DustinAP\AbTesting\Models\Goal;
 use DustinAP\AbTesting\Models\Experiment;
 
-class ResetCommand extends Command
-{
+class ResetCommand extends Command {
     /**
      * The name and signature of the console command.
      *
@@ -27,8 +26,7 @@ class ResetCommand extends Command
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
     }
 
@@ -37,8 +35,7 @@ class ResetCommand extends Command
      *
      * @return mixed
      */
-    public function handle()
-    {
+    public function handle() {
         Goal::truncate();
         Experiment::truncate();
 

@@ -8,13 +8,11 @@ use Illuminate\Support\ServiceProvider;
 use DustinAP\AbTesting\Commands\ResetCommand;
 use DustinAP\AbTesting\Commands\ReportCommand;
 
-class AbTestingServiceProvider extends ServiceProvider
-{
+class AbTestingServiceProvider extends ServiceProvider {
     /**
      * Bootstrap the application services.
      */
-    public function boot()
-    {
+    public function boot() {
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
         if ($this->app->runningInConsole()) {
@@ -40,8 +38,7 @@ class AbTestingServiceProvider extends ServiceProvider
     /**
      * Register the application services.
      */
-    public function register()
-    {
+    public function register() {
         // Automatically apply the package configuration
         $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'ab-testing');
 

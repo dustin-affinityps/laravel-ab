@@ -2,12 +2,10 @@
 
 namespace DustinAP\AbTesting\Events;
 
-class GoalCompleted
-{
+class GoalCompleted {
     public $goal;
 
-    public function __construct($goal)
-    {
+    public function __construct($goal) {
         $this->goal = $goal;
     }
 }

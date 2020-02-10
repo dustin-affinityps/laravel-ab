@@ -5,8 +5,7 @@ namespace DustinAP\AbTesting\Commands;
 use Illuminate\Console\Command;
 use DustinAP\AbTesting\Models\Experiment;
 
-class ReportCommand extends Command
-{
+class ReportCommand extends Command {
     /**
      * The name and signature of the console command.
      *
@@ -26,8 +25,7 @@ class ReportCommand extends Command
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
     }
 
@@ -36,16 +34,14 @@ class ReportCommand extends Command
      *
      * @return mixed
      */
-    public function handle()
-    {
+    public function handle() {
         $header = $this->prepareHeader();
         $body = $this->prepareBody();
 
         $this->table($header, $body);
     }
 
-    public function prepareHeader()
-    {
+    public function prepareHeader() {
         $header = [
             'Experiment',
             'Visitors',
@@ -56,8 +52,7 @@ class ReportCommand extends Command
         }, config('ab-testing.goals')));
     }
 
-    public function prepareBody()
-    {
+    public function prepareBody() {
         return Experiment::all()->map(function ($item) {
             $return = [$item->name, $item->visitors];
 

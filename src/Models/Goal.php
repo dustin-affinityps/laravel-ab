@@ -4,8 +4,7 @@ namespace DustinAP\AbTesting\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Goal extends Model
-{
+class Goal extends Model {
     protected $table = 'ab_goals';
 
     protected $fillable = [
@@ -17,13 +16,11 @@ class Goal extends Model
         'hit' => 'integer',
     ];
 
-    public function experiment()
-    {
+    public function experiment() {
         return $this->belongsTo(Experiment::class);
     }
 
-    public function incrementHit()
-    {
+    public function incrementHit() {
         $this->increment('hit');
     }
 }

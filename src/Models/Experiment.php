@@ -4,12 +4,12 @@ namespace DustinAP\AbTesting\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Experiment extends Model
-{
+class Experiment extends Model {
     protected $table = 'ab_experiments';
 
     protected $fillable = [
         'name',
+        'url',
         'visitors',
     ];
 
@@ -17,13 +17,11 @@ class Experiment extends Model
         'visitors' => 'integer',
     ];
 
-    public function goals()
-    {
+    public function goals() {
         return $this->hasMany(Goal::class);
     }
 
-    public function incrementVisitor()
-    {
+    public function incrementVisitor() {
         $this->increment('visitors');
     }
 }
