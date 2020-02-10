@@ -3,8 +3,6 @@ This package helps you A/B tests and create experiments and goals. The visitor w
 
 ## Installation
 
-You can install the package via composer:
-
 First add the private repo to your composer.json
 ```json
 {
@@ -12,6 +10,8 @@ First add the private repo to your composer.json
     "url": "git@github.com:dustin-affinityps/laravel-ab"
 }
 ```
+
+You can install the package via composer:
 
 ```bash
 composer require dustin-affinityps/laravel-ab
