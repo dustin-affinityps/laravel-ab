@@ -1,6 +1,27 @@
 <?php
 
 return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Enable Experiment
+    |--------------------------------------------------------------------------
+    |
+    | Used to enable/disable the experiment
+    |
+    */
+    'enabled' => false,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Redirect URLs
+    |--------------------------------------------------------------------------
+    |
+    | Redirect to specified URLs
+    |
+    */
+    'redirect' => false,
+
     /*
     |--------------------------------------------------------------------------
     | Experiments
@@ -12,18 +33,29 @@ return [
     |
     */
     'experiments' => [],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Default Experiment
+    |--------------------------------------------------------------------------
+    |
+    | Which experiment will be used as the default
+    |
+    */
+    'defaultExperiment' => null,
+
     /*
     |--------------------------------------------------------------------------
     | URLs
     |--------------------------------------------------------------------------
     |
-    | An associative list of URLs to redirect each experiment to.
-    | Each key must be from the experiments list, will default to env('APP_URL')
+    | A list of URLs specified by experiment identifiers.
     |
-    | Example: ['big-logo' => 'ww1.url.com', 'small-buttons' => 'url.com']
+    | Example: ['big-logo'=>'url1.com','small-buttons'=>'url2.com']
     |
     */
     'urls' => [],
+
     /*
     |--------------------------------------------------------------------------
     | Goals
@@ -35,6 +67,7 @@ return [
     |
     */
     'goals' => [],
+
     /*
     |--------------------------------------------------------------------------
     | Ignore Crawlers
@@ -43,5 +76,5 @@ return [
     | Ignore pageviews for crawlers.
     |
     */
-    'ignore_crawlers' => false,
+    'ignoreCrawlers' => false,
 ];

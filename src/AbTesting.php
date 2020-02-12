@@ -11,24 +11,26 @@ use DustinAP\AbTesting\Exceptions\InvalidConfiguration;
 use Jaybizzle\CrawlerDetect\CrawlerDetect;
 
 class AbTesting {
-    protected $experiments;
-
     const SESSION_KEY_EXPERIMENT = 'ab_testing_experiment';
     const SESSION_KEY_GOALS = 'ab_testing_goals';
 
+    protected $experiments;
+    protected $enabled = false;
+    protected $redirect = false;
+    protected $config;
+
     public function __construct() {
         $this->experiments = new Collection;
+
+        $this->setConfig();
     }
 
-    /**
-     * Validates the config items and puts them into models.
-     *
-     * @return void
-     */
-    protected function start() {
+    protected function setConfig() {
         $configExperiments = config('ab-testing.experiments');
         $configGoals = config('ab-testing.goals');
         $configURLs = config('ab-testing.urls');
+        $configDefault = config('ab-testing.defaultExperiment');
+        $configSetOnURL = config('ab-testing.setBasedOnURL');
 
         if (! count($configExperiments)) {
             throw InvalidConfiguration::noExperiment();
@@ -46,22 +48,49 @@ class AbTesting {
             $configURLs = [];
         }
 
-        foreach ($configExperiments as $configExperiment) {
+        if ( (bool)config('ab-testing.enabled') ) {
+            $this->enabled = true;
+        }
+
+        if ( (bool)config('ab-testing.redirect') ) {
+            $this->redirect = true;
+        }
+
+        $setBasedOnURL = ($configSetOnURL || false);
+
+        $defaultExperiment = ($configDefault ?: array_keys($configExperiments)[0]);
+
+        $this->config = [
+            'default' => $defaultExperiment,
+            'setBasedOnURL' => $setBasedOnURL,
+            'experiments' => $configExperiments,
+            'goals' => $configGoals,
+            'urls' => $configURLs,
+        ];
+    }
+
+    /**
+     * Validates the config items and puts them into models.
+     *
+     * @return void
+     */
+    protected function start() {
+        foreach ($this->config['experiments'] as $cExperiment) {
             $experimentURL = (
-                array_key_exists($configExperiment, $configURLs) ?
-                $configURLs[$configExperiment] : env('APP_URL')
+                array_key_exists($cExperiment, $this->config['urls']) ?
+                $this->config['urls'][$cExperiment] : env('APP_URL')
             );
 
             $this->experiments[] = $experiment = Experiment::firstOrCreate([
-                'name' => $configExperiment,
+                'name' => $cExperiment,
                 'url'  => $experimentURL,
             ], [
                 'visitors' => 0,
             ]);
 
-            foreach ($configGoals as $configGoal) {
+            foreach ($this->config['goals'] as $cGoal) {
                 $experiment->goals()->firstOrCreate([
-                    'name' => $configGoal,
+                    'name' => $cGoal,
                 ], [
                     'hit' => 0,
                 ]);
@@ -79,7 +108,7 @@ class AbTesting {
      * @return \DustinAP\AbTesting\Models\Experiment|void
      */
     public function pageView() {
-        if (config('ab-testing.ignore_crawlers') && (new CrawlerDetect)->isCrawler()) {
+        if (config('ab-testing.ignoreCrawlers') && (new CrawlerDetect)->isCrawler()) {
             return;
         }
 
@@ -103,7 +132,7 @@ class AbTesting {
     protected function setNextExperiment() {
         $next = $this->getNextExperiment();
 
-        if ( $next->url != $_SERVER['SERVER_NAME'] ) {
+        if ( $this->redirect && $next->url != $_SERVER['SERVER_NAME'] ) {
             header('Location: https://' . $next->url);
             exit(0);
         }
@@ -121,7 +150,17 @@ class AbTesting {
      * @return \DustinAP\AbTesting\Models\Experiment|null
      */
     protected function getNextExperiment() {
-        $sorted = $this->experiments->sortBy('visitors');
+        if ( !$this->enabled ) {
+            if ( $this->config['setBasedOnURL'] ) {
+                $specifiedURL = $_SERVER['SERVER_NAME'];
+
+                $sorted = $this->experiments->where('url', '=', $specifiedURL);
+            } else {
+                $sorted = $this->experiments->where('name', '=', $this->config['default']);
+            }
+        } else {
+            $sorted = $this->experiments->sortBy('visitors');
+        }
 
         return $sorted->first();
     }

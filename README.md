@@ -19,15 +19,36 @@ composer require dustin-affinityps/laravel-ab
 
 ## Config
 
+### Publish Config
+
 After installation publish the config file:
 
 ```bash
 php artisan vendor:publish --provider="DustinAP\AbTesting\AbTestingServiceProvider"
 ```
 
-You can define your experiments, URLs, and goals in there.
+### Config Options
 
-Finally, run the newly added migration
+Several options exist here for controlling your experiment
+
+`enabled` - enables/disables experiment.
+
+`redirect` - enables/disables redirect URLs.
+
+`experiments` - array of experiment names.
+
+`urls` - associative array which assigns a specified URL to a corresponding experiment name.
+
+`defaultExperiment` - sets the default experiment to an entry from experiments.
+
+`setBasedOnURL` - allows you to access an experiment based on the URL assigned to it, while the experiment is disabled, thus not redirecting users.
+
+`goals` - array of goal names.
+
+`ignoreCrawlers` - sets whether to ignore crawlers.
+ 
+
+### Finally, run the newly added migration
 
 ```bash
 php artisan migrate
@@ -172,6 +193,10 @@ composer test
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+
+## Forked
+
+This package forked from [ben182/laravel-ab](https://github.com/ben182/laravel-ab)
 
 ## Laravel Package Boilerplate
 
